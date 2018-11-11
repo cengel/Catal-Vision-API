@@ -1,0 +1,23 @@
+```{r, echo=FALSE, purl=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo=FALSE, comment = "#>")
+
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(stringr)
+
+filenames <- list.files("thumbs/") %>% str_remove("thumb_")
+c_gviz_sub <- read.csv("../../API_tests/catal_sample_1000_GV_output.csv") %>%   # read peter's data here 
+    filter(filename %in% filenames) # keep only subset of 766 we actually have thumbnail images of
+```
+
+# OCR images with extracted text
+
+```{r, results='asis'}
+c_gviz_sub %>% 
+  filter(type == "ocr" & value != "") %>% 
+  mutate(img = sprintf('![](./thumbs/thumb_%s)', filename)) %>% 
+  select(filename, value, img) %>% 
+  kable() %>% 
+     column_spec(3, width = "330px")
+```

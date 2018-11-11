@@ -1,0 +1,34 @@
+```{r, echo=FALSE, purl=FALSE, message=FALSE}
+#knitr::opts_chunk$set(results='hide', comment = "#>", purl = FALSE)
+
+library(knitr)
+library(kableExtra)
+library(stringr)
+library(dplyr)
+
+filenames <- list.files("thumbs/") %>% str_remove("thumb_")
+c_gviz_sub <- read.csv("../../API_tests/catal_sample_1000_GV_output.csv") %>%   # read peter's data here 
+    filter(filename %in% filenames) # keep only subset of 766 we actually have thumbnail images of
+```
+
+# Entity: "Laborer"
+
+```{r, echo=FALSE, results='asis'}
+
+# filter from subset 
+
+imgs <- c_gviz_sub %>% 
+  filter(type == "entity", 
+         value == "Laborer",
+         score > 0.8) %>% 
+  # create the pointer to the thumb
+  mutate(img = sprintf('![](./thumbs/thumb_%s)', filename)) %>% 
+  select(img) 
+
+# make it two cols << very inelegant fiddling!
+data.frame(col1 = imgs[1:2,], col2 = imgs[3:4,]) %>% 
+  kable(caption = "'Laborer' - confidence score > 0.8")
+
+```
+  
+

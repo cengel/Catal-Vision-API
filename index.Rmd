@@ -1,0 +1,27 @@
+--- 
+title: "Catal Image Vision API Tests"
+author: "Claudia A Engel"
+date: "Last updated: `r format(Sys.time(), '%B %d, %Y')`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: cengel/Catal-Vision-API
+description: "Tests of catal images with vision cloud APIs to describe content"
+---
+
+
+# Intro {-}
+
+We sampled 1000 random images out of the ~138k that are currently accessioned into [SDR](https://sdr.stanford.edu) and generated labels using the [Google Vision API](https://cloud.google.com/vision/).  
+
+Code to retreive lables is here: https://github.com/sul-dlss-labs/google-vision-ai
+
+Catal is project here: http://catalhoyuk.com
+
+For various reasons we had some attrition and ended up with 766 images. Results shown here are based on those.
+
+
+

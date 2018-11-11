@@ -1,0 +1,10834 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Catal Image Vision API Tests</title>
+  <meta name="description" content="Tests of catal images with vision cloud APIs to describe content">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Catal Image Vision API Tests" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tests of catal images with vision cloud APIs to describe content" />
+  <meta name="github-repo" content="cengel/Catal-Vision-API" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Catal Image Vision API Tests" />
+  
+  <meta name="twitter:description" content="Tests of catal images with vision cloud APIs to describe content" />
+  
+
+<meta name="author" content="Claudia A Engel">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="images-601-700.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Catal Vision API Tests</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a></li>
+<li class="chapter" data-level="1" data-path="some-generic-introspection.html"><a href="some-generic-introspection.html"><i class="fa fa-check"></i><b>1</b> Some generic introspection</a><ul>
+<li class="chapter" data-level="1.1" data-path="some-generic-introspection.html"><a href="some-generic-introspection.html#frequency-of-labels"><i class="fa fa-check"></i><b>1.1</b> Frequency of labels</a></li>
+<li class="chapter" data-level="1.2" data-path="some-generic-introspection.html"><a href="some-generic-introspection.html#distribution-of-probablity-scores"><i class="fa fa-check"></i><b>1.2</b> Distribution of probablity scores</a></li>
+<li class="chapter" data-level="1.3" data-path="some-generic-introspection.html"><a href="some-generic-introspection.html#top-ranking-labels"><i class="fa fa-check"></i><b>1.3</b> Top ranking labels</a></li>
+<li class="chapter" data-level="1.4" data-path="some-generic-introspection.html"><a href="some-generic-introspection.html#score-distribution-for-those-top-ranking-labels"><i class="fa fa-check"></i><b>1.4</b> Score distribution for those top ranking labels</a></li>
+<li class="chapter" data-level="1.5" data-path="some-generic-introspection.html"><a href="some-generic-introspection.html#most-used-labels-more-than-50-times-and-their-mean-scores"><i class="fa fa-check"></i><b>1.5</b> Most used labels (more than 50 times) and their mean scores</a></li>
+<li class="chapter" data-level="1.6" data-path="some-generic-introspection.html"><a href="some-generic-introspection.html#highest-scoring-labels-over-0.8-and-their-frequency"><i class="fa fa-check"></i><b>1.6</b> Highest scoring labels (over 0.8) and their frequency</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ocr-images-with-extracted-text.html"><a href="ocr-images-with-extracted-text.html"><i class="fa fa-check"></i><b>2</b> OCR images with extracted text</a></li>
+<li class="chapter" data-level="3" data-path="entity-archaeology.html"><a href="entity-archaeology.html"><i class="fa fa-check"></i><b>3</b> Entity: “Archaeology”</a></li>
+<li class="chapter" data-level="4" data-path="entity-catalhoyuk.html"><a href="entity-catalhoyuk.html"><i class="fa fa-check"></i><b>4</b> Entity: “Çatalhöyük”</a></li>
+<li class="chapter" data-level="5" data-path="entity-laborer.html"><a href="entity-laborer.html"><i class="fa fa-check"></i><b>5</b> Entity: “Laborer”</a></li>
+<li class="chapter" data-level="6" data-path="label-ancient-history.html"><a href="label-ancient-history.html"><i class="fa fa-check"></i><b>6</b> Label: “ancient history”</a></li>
+<li class="chapter" data-level="7" data-path="label-archaeology.html"><a href="label-archaeology.html"><i class="fa fa-check"></i><b>7</b> Label: “archaeology”</a></li>
+<li class="chapter" data-level="8" data-path="label-archaeological-site.html"><a href="label-archaeological-site.html"><i class="fa fa-check"></i><b>8</b> Label: “archaeological site”</a></li>
+<li class="chapter" data-level="9" data-path="label-artifact.html"><a href="label-artifact.html"><i class="fa fa-check"></i><b>9</b> Label: “artifact”</a></li>
+<li class="chapter" data-level="10" data-path="label-building.html"><a href="label-building.html"><i class="fa fa-check"></i><b>10</b> Label: “building”</a></li>
+<li class="chapter" data-level="11" data-path="label-fauna.html"><a href="label-fauna.html"><i class="fa fa-check"></i><b>11</b> Label: “fauna”</a></li>
+<li class="chapter" data-level="12" data-path="label-geology.html"><a href="label-geology.html"><i class="fa fa-check"></i><b>12</b> Label: “geology”</a></li>
+<li class="chapter" data-level="13" data-path="label-rock.html"><a href="label-rock.html"><i class="fa fa-check"></i><b>13</b> Label: “rock”</a></li>
+<li class="chapter" data-level="14" data-path="label-ruins.html"><a href="label-ruins.html"><i class="fa fa-check"></i><b>14</b> Label: “ruins”</a></li>
+<li class="chapter" data-level="15" data-path="label-sand.html"><a href="label-sand.html"><i class="fa fa-check"></i><b>15</b> Label: “sand”</a></li>
+<li class="chapter" data-level="16" data-path="label-social-group.html"><a href="label-social-group.html"><i class="fa fa-check"></i><b>16</b> Label: “social group”</a></li>
+<li class="chapter" data-level="17" data-path="label-soil.html"><a href="label-soil.html"><i class="fa fa-check"></i><b>17</b> Label: “soil”</a></li>
+<li class="chapter" data-level="18" data-path="label-structure.html"><a href="label-structure.html"><i class="fa fa-check"></i><b>18</b> Label: “structure”</a></li>
+<li class="chapter" data-level="19" data-path="label-wall.html"><a href="label-wall.html"><i class="fa fa-check"></i><b>19</b> Label: “wall”</a></li>
+<li class="chapter" data-level="20" data-path="images-1-100.html"><a href="images-1-100.html"><i class="fa fa-check"></i><b>20</b> Images 1-100</a></li>
+<li class="chapter" data-level="21" data-path="images-101-200.html"><a href="images-101-200.html"><i class="fa fa-check"></i><b>21</b> Images 101-200</a></li>
+<li class="chapter" data-level="22" data-path="images-201-300.html"><a href="images-201-300.html"><i class="fa fa-check"></i><b>22</b> Images 201-300</a></li>
+<li class="chapter" data-level="23" data-path="images-301-400.html"><a href="images-301-400.html"><i class="fa fa-check"></i><b>23</b> Images 301-400</a></li>
+<li class="chapter" data-level="24" data-path="images-401-500.html"><a href="images-401-500.html"><i class="fa fa-check"></i><b>24</b> Images 401-500</a></li>
+<li class="chapter" data-level="25" data-path="images-501-600.html"><a href="images-501-600.html"><i class="fa fa-check"></i><b>25</b> Images 501-600</a></li>
+<li class="chapter" data-level="26" data-path="images-601-700.html"><a href="images-601-700.html"><i class="fa fa-check"></i><b>26</b> Images 601-700</a></li>
+<li class="chapter" data-level="27" data-path="images-701-766.html"><a href="images-701-766.html"><i class="fa fa-check"></i><b>27</b> Images 701-766</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Catal Image Vision API Tests</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="images-701-766" class="section level1">
+<h1><span class="header-section-number">Chapter 27</span> Images 701-766</h1>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>ch96t0002_32.jpg
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="14">
+<img src="thumbs/thumb_ch96t0002_32.jpg" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bedrock
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fault
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+escarpment
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeological site
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>ch96t0007_34.jpg
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sky
+</td>
+<td style="text-align:right;">
+0.94
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="30">
+<img src="thumbs/thumb_ch96t0007_34.jpg" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+tree
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+morning
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sunlight
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rural area
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+grass
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+picture frame
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+plain
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wood
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+horizon
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ecoregion
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+field
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+cloud
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+visual arts
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+window
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Window
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Visual arts
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+/m/083vt
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Picture Frames
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Wood
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Kolej Tuanku Ja’afar
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Art
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Rural area
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Morning
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ecoregion
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Image
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Sky plc
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97_OS17_12.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+photograph
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="29">
+<img src="thumbs/thumb_CH97_OS17_12.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+man
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+person
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+mammal
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+standing
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sitting
+</td>
+<td style="text-align:right;">
+0.84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+snapshot
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fun
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+leg
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+floor
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+human
+</td>
+<td style="text-align:right;">
+0.75
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+human body
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+cool
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+flooring
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+muscle
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+girl
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+facial hair
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+human behavior
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+trunk
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Facial hair
+</td>
+<td style="text-align:right;">
+0.96
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Human
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Human behavior
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Muscle
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Behavior
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Human leg
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Hair
+</td>
+<td style="text-align:right;">
+0.35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Girl
+</td>
+<td style="text-align:right;">
+0.35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97_OS19_10.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="15">
+<img src="thumbs/thumb_CH97_OS19_10.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+girl
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+adventure
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+boulder
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bouldering
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Boulder
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Bouldering
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Girl
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97_OS19_28.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+produce
+</td>
+<td style="text-align:right;">
+0.97
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="22">
+<img src="thumbs/thumb_CH97_OS19_28.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+local food
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+food
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+market
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+greengrocer
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+marketplace
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+vegetable
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+plant
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+stall
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+whole food
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Vegetable
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Greengrocer
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Grocery store
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Marketplace
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Food
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Local food
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Whole Foods Market
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Vendor
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Plants
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Makes-Em
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97_OS2_14.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+vehicle
+</td>
+<td style="text-align:right;">
+0.91
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="9">
+<img src="thumbs/thumb_CH97_OS2_14.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+transport
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+car
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+tree
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+road
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sign
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Car
+</td>
+<td style="text-align:right;">
+1.08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+HALIA TOUR FAX: 065켜,-211765 ogentura Fox
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97_OS22_01.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+infrastructure
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="10">
+<img src="thumbs/thumb_CH97_OS22_01.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+street
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+road
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+girl
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+recreation
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fun
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Street
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Recreation
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Girl
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97_OS23_14.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+people
+</td>
+<td style="text-align:right;">
+0.96
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="14">
+<img src="thumbs/thumb_CH97_OS23_14.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+tree
+</td>
+<td style="text-align:right;">
+0.84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fun
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+tourism
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+temple
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+recreation
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+girl
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+crowd
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+senior citizen
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+family
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Tourism
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Family M Invest d.o.o.
+</td>
+<td style="text-align:right;">
+0.35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97_OS23_15.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+photograph
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="15">
+<img src="thumbs/thumb_CH97_OS23_15.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+photography
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sitting
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+tree
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+adventure
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fun
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+recreation
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+grass
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+girl
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Photograph
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Photography
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Photograph
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Photograph
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97_OS3_26.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.93
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="20">
+<img src="thumbs/thumb_CH97_OS3_26.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geological phenomenon
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wall
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+mud
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+quarry
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+construction
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeological site
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+History
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Construction
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ancient history
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Phenomenon
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97_TR20_12.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+drink
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="19">
+<img src="thumbs/thumb_CH97_TR20_12.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+music
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+plucked string instruments
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+musical instrument
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fun
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+string instrument
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+musical instrument accessory
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+alcohol
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Plucked string instrument
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Alcoholic Beverages
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Musical Instruments
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Music
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Musical Instrument Accessory
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+String Instruments
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+String
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Drink
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Alcoholism
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+MusicM Inc.
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97-F2_17.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.97
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="7">
+<img src="thumbs/thumb_CH97-F2_17.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97-F6_22.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wall
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="13">
+<img src="thumbs/thumb_CH97-F6_22.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+stone wall
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bedrock
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Stone wall
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Wall
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Rock
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97-finds film 5_17.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+atmosphere
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="10">
+<img src="thumbs/thumb_CH97-finds%20film%205_17.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+font
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+computer wallpaper
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+space
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+material
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+darkness
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Desktop Wallpaper
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Computer
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Font
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97-misc 09.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="25">
+<img src="thumbs/thumb_CH97-misc%2009.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+relief
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+carving
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+stone carving
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+artifact
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+history
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+anthropologist
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Çatalhöyük
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeological site
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ancient history
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Anthropologist
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Nepal
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Tashkent University of Information Technologies
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Water
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Wall
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Book
+</td>
+<td style="text-align:right;">
+0.14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Carving
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+.com
+</td>
+<td style="text-align:right;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Vulture
+</td>
+<td style="text-align:right;">
+0.10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+İsmail Gezgin
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97-misc 22.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+design
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="3">
+<img src="thumbs/thumb_CH97-misc%2022.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Design M Group
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+CIN BOW
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97-N-4_25.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="5">
+<img src="thumbs/thumb_CH97-N-4_25.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH97-N-8_21.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+aerial photography
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="19">
+<img src="thumbs/thumb_CH97-N-8_21.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+water resources
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bird’s eye view
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+suburb
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+land lot
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sky
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+road
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Aerial photography
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Atmosphere of Earth
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Bird’s-eye view
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Water
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Earth
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Land lot
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Water resources
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Suburb
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Photography
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Atmosphere
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Resource
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH98-F11_25.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+aerial photography
+</td>
+<td style="text-align:right;">
+0.95
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="9">
+<img src="thumbs/thumb_CH98-F11_25.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bird’s eye view
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+suburb
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Aerial photography
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Bird’s-eye view
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Photography
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Suburb
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Photograph
+</td>
+<td style="text-align:right;">
+0.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH99 S 99786 6.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="13">
+<img src="thumbs/thumb_CH99%20S%2099786%206.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+snow
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+freezing
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+water
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+winter
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+art
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+painting
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Painting
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Snow
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Dagens Nyheter
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH99 SOUTH [99754] 03.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wall
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="9">
+<img src="thumbs/thumb_CH99%20SOUTH%20[99754]%2003.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ruins
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+concrete
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bunker
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Concrete
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ancient history
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+History
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>CH99 SOUTH [99754] 04.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geological phenomenon
+</td>
+<td style="text-align:right;">
+0.75
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="7">
+<img src="thumbs/thumb_CH99%20SOUTH%20[99754]%2004.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Phenomenon
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>ch99t0001_21.jpg
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="15">
+<img src="thumbs/thumb_ch99t0001_21.jpg" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wall
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+floor
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+road surface
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+asphalt
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+concrete
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+flooring
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+cement
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Road surface
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Floor
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Asphalt
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Road
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>ch99t0010_14.jpg
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wall
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="10">
+<img src="thumbs/thumb_ch99t0010_14.jpg" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+shadow
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wood
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+concrete
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+/m/083vt
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>DSC_0035.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+cave
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="10">
+<img src="thumbs/thumb_DSC_0035.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+caving
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Cave
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Caving
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>DSC_0473.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+floor
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="8">
+<img src="thumbs/thumb_DSC_0473.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+flooring
+</td>
+<td style="text-align:right;">
+0.84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bricklayer
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+furniture
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+hardwood
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Floor
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Bricklayer
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+glass Pape Cans
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>DSC_0909.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="5">
+<img src="thumbs/thumb_DSC_0909.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fossil
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+44 22
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>Dscn0001vb.jpg
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Conchology
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="2">
+<img src="thumbs/thumb_Dscn0001vb.jpg" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+4657.D1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>DSCN1007.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="3">
+<img src="thumbs/thumb_DSCN1007.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+artifact
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>DSCN1088.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="7">
+<img src="thumbs/thumb_DSCN1088.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+artifact
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+mineral
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+carving
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Mineral
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Carving
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>DSCN1492.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+artifact
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="4">
+<img src="thumbs/thumb_DSCN1492.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+mineral
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Mineral
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+CH99 2841.x1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>DSCN1893.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+artifact
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="7">
+<img src="thumbs/thumb_DSCN1893.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bone
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+jaw
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+organism
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Bone
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Organism
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+Cm
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>IMG_0106.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+headgear
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="9">
+<img src="thumbs/thumb_IMG_0106.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+product
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+recreation
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+service
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fun
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Headgear
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Service
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Recreation
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>IMG_2407.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+vehicle
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="9">
+<img src="thumbs/thumb_IMG_2407.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+grass
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+tree
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+car
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+plant
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Car
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>IMG_3183.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="6">
+<img src="thumbs/thumb_IMG_3183.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+CHO7 WEST TS しWall plaster- NCHUL2007 S310
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>IMG_4090.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="12">
+<img src="thumbs/thumb_IMG_4090.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bedrock
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>IMG_4708.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fossil
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="4">
+<img src="thumbs/thumb_IMG_4708.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Fossil Group
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+4040 CHO8 unit: 16422 find/sample: material: AU1M사 initials/date 22/07/08 cm
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>IMG_4981.jpg
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="12">
+<img src="thumbs/thumb_IMG_4981.jpg" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+construction worker
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Laborer
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Construction worker
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Construction
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>IMG_7673.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="23">
+<img src="thumbs/thumb_IMG_7673.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+tourist attraction
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+arch
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ruins
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+amphitheatre
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+historic site
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Çatalhöyük
+</td>
+<td style="text-align:right;">
+1.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Neolithic
+</td>
+<td style="text-align:right;">
+1.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeological site
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Konya
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ani
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+History
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Culture
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Stone Age
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Hotel
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Tourism
+</td>
+<td style="text-align:right;">
+0.35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+World Heritage site
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+James Mellaart
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Turkey
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>IMG_7702.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.98
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="10">
+<img src="thumbs/thumb_IMG_7702.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Landscape
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>IMG_7754.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="15">
+<img src="thumbs/thumb_IMG_7754.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+hand
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+adventure
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+recreation
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bedrock
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+H&amp;M
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>IMG_7922.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="25">
+<img src="thumbs/thumb_IMG_7922.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+stone carving
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+artifact
+</td>
+<td style="text-align:right;">
+0.85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+igneous rock
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+mineral
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+pebble
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fossil
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+granite
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Brooch
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Jewellery
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Silver
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Brosche Magnet Magnetbrosche Strass
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Rhinestone
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Price
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Boeing 737
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Real
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Fossil Group
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Stone carving
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+2018
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Euro
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Stern
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+Cm
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>Ist Area- 26.07.08 (75).JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ruins
+</td>
+<td style="text-align:right;">
+0.91
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="19">
+<img src="thumbs/thumb_Ist%20Area-%2026.07.08%20(75).JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+history
+</td>
+<td style="text-align:right;">
+0.75
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+historic site
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+cliff dwelling
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeological site
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+History
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ancient history
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>kostka_7187_1.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+dice
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="6">
+<img src="thumbs/thumb_kostka_7187_1.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Product design
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Dice
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Product
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Design
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>L-S112 R-S113.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="21">
+<img src="thumbs/thumb_L-S112%20R-S113.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ruins
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+history
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+historic site
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wadi
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+cliff dwelling
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeological site
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ancient history
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+History
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Wadi
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Wadi
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P2060017.jpg
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+field
+</td>
+<td style="text-align:right;">
+0.91
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="28">
+<img src="thumbs/thumb_P2060017.jpg" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ecosystem
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+plain
+</td>
+<td style="text-align:right;">
+0.85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sky
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ecoregion
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+energy
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+prairie
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wind
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+grass family
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+steppe
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+crop
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+agriculture
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+land lot
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+grassland
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+farm
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wind farm
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Steppe
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Prairie
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Energy
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ecoregion
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Wind
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Land lot
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Grasses
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Farm
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Sky plc
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P6170160.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+floor
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="11">
+<img src="thumbs/thumb_P6170160.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+flooring
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+arm
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+product
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+hand
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+child
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+girl
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Floor
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+H&amp;M
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P6230375.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+technology
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="4">
+<img src="thumbs/thumb_P6230375.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+space
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Technology
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P6270417.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wall
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="8">
+<img src="thumbs/thumb_P6270417.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+line
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+concrete
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Line
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P7110014.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.84
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="9">
+<img src="thumbs/thumb_P7110014.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+construction
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+foundation
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+quarry
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+M Foundation
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P7250038.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geological phenomenon
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="14">
+<img src="thumbs/thumb_P7250038.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+grass family
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+water
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+plant community
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+plant
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+tree
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Plant community
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Plants
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Grasses
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Phenomenon
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P8010115.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+community
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="8">
+<img src="thumbs/thumb_P8010115.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rural area
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+recreation
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+vehicle
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Car
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Rural area
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Vehicle
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P8090028.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bedrock
+</td>
+<td style="text-align:right;">
+0.91
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="21">
+<img src="thumbs/thumb_P8090028.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fault
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geological phenomenon
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+igneous rock
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+dike
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+escarpment
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sill
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Sill
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Fault
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Igneous rock
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Dike
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Phenomenon
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P8090029.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bedrock
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="14">
+<img src="thumbs/thumb_P8090029.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fault
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+dike
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sill
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Dike
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P8120044.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="26">
+<img src="thumbs/thumb_P8120044.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bedrock
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+igneous rock
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fault
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+limestone
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+dike
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Gobustan National Park
+</td>
+<td style="text-align:right;">
+1.06
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Gobustan Rock Art
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Qobustan, Baku
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Petroglyph
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Cliffed coast
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Igneous rock
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Coast
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Dike
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Azerbaijan
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P8160394.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="19">
+<img src="thumbs/thumb_P8160394.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+stone carving
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+fossil
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+relief
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sculpture
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+carving
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Sculpture
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeological site
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Stone carving
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+History
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Carving
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ancient history
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Rock
+</td>
+<td style="text-align:right;">
+0.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Fossil Group
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P8170030.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="6">
+<img src="thumbs/thumb_P8170030.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+concrete
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Concrete
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P8190430.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+meat
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="11">
+<img src="thumbs/thumb_P8190430.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+mineral
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+beef
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+animal source foods
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+brisket
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+lamb and mutton
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Mineral
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Brisket
+</td>
+<td style="text-align:right;">
+0.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Lamb and mutton
+</td>
+<td style="text-align:right;">
+0.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P9070050.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+artifact
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="2">
+<img src="thumbs/thumb_P9070050.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P9210718.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+angle
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="6">
+<img src="thumbs/thumb_P9210718.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Product design
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Angle
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Product
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Design
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+Cm
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P9250993.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+button
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="7">
+<img src="thumbs/thumb_P9250993.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Product design
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Product
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Design
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Barnes &amp; Noble
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>P9251084.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Product design
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="4">
+<img src="thumbs/thumb_P9251084.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Product
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Design
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>PA141235.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="23">
+<img src="thumbs/thumb_PA141235.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ruins
+</td>
+<td style="text-align:right;">
+0.87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+historic site
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+history
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wadi
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+quarry
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+0.56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeological site
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+History
+</td>
+<td style="text-align:right;">
+0.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ancient history
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Wadi
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Wadi
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>smm_sara_063.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+shed
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="13">
+<img src="thumbs/thumb_smm_sara_063.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+hut
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+roof
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outdoor structure
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+house
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+log cabin
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+shack
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+tree
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+cottage
+</td>
+<td style="text-align:right;">
+0.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+facade
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Shed
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Roof
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+CAag op
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>smm_sara_065.JPG
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+font
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="3">
+<img src="thumbs/thumb_smm_sara_065.JPG" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Font
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-59">Table 27.1: </span>third week 020.jpg
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+img
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+<td style="text-align:left;width: 330px; vertical-align: top !important;" rowspan="23">
+<img src="./thumbs/thumb_third%20week%20020.jpg" />
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+0.85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+0.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+wadi
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+canyon
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+bedrock
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+label
+</td>
+<td style="text-align:left;">
+history
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Archaeological site
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+History
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Ancient history
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Wadi
+</td>
+<td style="text-align:right;">
+0.35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+entity
+</td>
+<td style="text-align:left;">
+Wadi
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ocr
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="images-601-700.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cengel/Catal-Vision-API/edit/master/701-766.Rmd",
+"text": "Edit"
+},
+"download": ["API-demos.pdf", "API-demos.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

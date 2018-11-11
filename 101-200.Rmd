@@ -1,0 +1,36 @@
+```{r, echo=FALSE, purl=FALSE, message=FALSE}
+#knitr::opts_chunk$set(results='hide', comment = "#>", purl = FALSE)
+
+library(knitr)
+library(kableExtra)
+library(stringr)
+library(dplyr)
+
+c_gviz <- read.csv("../../API_tests/catal_sample_1000_GV_output.csv") # read peter's data here
+thumbs <- list.files("thumbs/") # take first 100 > make 10 pages.
+filenames <- str_remove(thumbs, "thumb_")
+```
+
+# Images 101-200 
+
+```{r, echo=FALSE, results='asis'}
+# create a table with kable and this:
+#https://stackoverflow.com/questions/25106481/add-an-image-to-a-table-like-output-in-r
+# add image and format using kableExtra:
+# https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
+
+for(f in filenames[101:200]){
+  c_gviz %>% 
+    filter(filename == f) %>%   # select subset
+    # add pointer to thumb
+    mutate(img = sprintf('![](./thumbs/thumb_%s)', f)) %>% 
+    select(-filename) %>%  # remove image name, we'll put it in the caption
+    # print table
+    kable(caption = f) %>%
+      column_spec(4, width = "330px") %>% 
+      collapse_rows(columns = 4, valign = "top") %>% 
+    print() # need to explicitly print from for loop
+}
+```
+  
+

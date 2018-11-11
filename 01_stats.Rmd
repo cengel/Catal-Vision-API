@@ -1,0 +1,129 @@
+```{r, echo=FALSE, purl=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo=FALSE, comment = "#>")
+
+library(stringr)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(kableExtra)
+
+filenames <- list.files("thumbs/") %>% str_remove("thumb_")
+c_gviz_sub <- read.csv("../../API_tests/catal_sample_1000_GV_output.csv") %>%   # read peter's data here 
+    filter(filename %in% filenames) # keep only subset of 766 we actually have thumbnail images of
+```
+
+# Some generic introspection
+
+Three types of results from Google Vision API:
+
+- `label` detect broad sets of objects based
+- `entity` uses Google Image Search to find topical entities 
+- `ocr` for Optical Character Recognition of text
+
+`entity` and `label` receive a `score` as a measure for how confident Google is about this.
+
+## Frequency of labels 
+
+```{r}
+ggplot(c_gviz_sub, aes(type)) + geom_bar()
+```
+
+## Distribution of probablity scores
+
+Mean score overall: `r mean(c_gviz_sub$score, na.rm = T)`. 
+
+```{r, warning=FALSE, fig.height=4}
+c_gviz_sub %>% 
+  filter(type != 'ocr') %>% 
+  ggplot(aes(score)) + 
+    geom_bar() +
+    #geom_vline(aes(xintercept = mean(score, na.rm = T)), color = "orange") + 
+    facet_wrap(~type, nrow = 2)
+```
+
+
+## Top ranking labels
+
+Number of lables with mean score of .8 or higher:
+
+```{r}
+c_gviz_sub %>% 
+  group_by(type, value) %>% 
+  summarise(mean_score = mean(score, na.rm = T)) %>% # this eliminates 'ocr' which has NA score 
+  filter(mean_score >= .8) %>% 
+  tally() %>% 
+  kable()
+```
+
+
+## Score distribution for those top ranking labels
+
+NOTE: There can be labels that are only mentioned very rarely, but scored high. Ns added to the plots. 
+
+```{r, fig.height=8}
+# get top lables 
+top_labels <- c_gviz_sub %>% 
+  group_by(type, value) %>% 
+  summarise(mean_score = mean(score, na.rm = T),
+            N = n()) %>% # this eliminates 'ocr' which has NA score 
+  filter(mean_score >= .8) 
+
+# plot for entity
+c_gviz_sub %>% 
+  filter(value %in% top_labels$value,
+         type == "entity") %>% 
+  left_join(top_labels, by = "value")  %>% 
+  ggplot(aes(x=reorder(value, N), y=score, label = N)) + 
+    geom_boxplot() +
+    geom_text(aes(y = .22)) +
+    coord_flip() +
+    ggtitle("entities with scores of .8 or higher") +
+    xlab("")
+
+# plot for label
+c_gviz_sub %>% 
+  filter(value %in% top_labels$value,
+         type == "label") %>% 
+  left_join(top_labels, by = "value")  %>% 
+  ggplot(aes(x=reorder(value, N), y=score, label = N)) + 
+    geom_boxplot() +
+    geom_text(aes(y = .6)) +
+    coord_flip() +
+    ggtitle("labels with scores of .8 or higher") +
+    xlab("")
+```
+
+
+## Most used labels (more than 50 times) and their mean scores
+
+```{r}
+c_gviz_sub %>% 
+  filter(type != 'ocr') %>% 
+  group_by(type, value) %>% 
+  summarize(N = n(),
+            mean_score = mean(score, na.rm = T)) %>% 
+  filter(N > 50) %>% 
+  arrange(desc(N)) %>% 
+  kable()
+ 
+```
+
+
+## Highest scoring labels (over 0.8) and their frequency
+
+```{r}
+c_gviz_sub %>% 
+  filter(score > 0.8, type == "label") %>% 
+  #group_by(type, value) %>% 
+  count(value) %>% 
+  arrange(desc(n)) %>% 
+  kable(caption = "Label")
+
+c_gviz_sub %>% 
+  filter(score > 0.8, type == "entity") %>% 
+  #group_by(type, value) %>% 
+  count(value) %>% 
+  arrange(desc(n)) %>% 
+  kable(caption = "Entity")
+```
+
