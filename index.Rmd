@@ -21,6 +21,8 @@ Code to retreive lables is here: https://github.com/sul-dlss-labs/google-vision-
 
 Catal is project here: http://catalhoyuk.com
 
+SUL AI studio: https://sites.google.com/stanford.edu/sul-ai-studio/
+
 For various reasons we had some attrition and ended up with 766 images. Results shown here are based on those.
 
 ## Comments, ideas in random order
