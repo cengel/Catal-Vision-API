@@ -23,5 +23,8 @@ Catal is project here: http://catalhoyuk.com
 
 For various reasons we had some attrition and ended up with 766 images. Results shown here are based on those.
 
+## Comments, ideas in random order
 
+-  It could be useful for discoverability if the images are embedded in a much larger dataset, but not sure about within the image dataset itself.
 
+- Instead of looking for positive identification turn it around and look for things that are *NOT* excavation or artifacts. For example, 'buildig' gets us images of the shelter. 
