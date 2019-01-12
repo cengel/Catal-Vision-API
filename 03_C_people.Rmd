@@ -1,0 +1,32 @@
+```{r, echo=FALSE, purl=FALSE, message=FALSE}
+#knitr::opts_chunk$set(results='hide', comment = "#>", purl = FALSE)
+
+library(knitr)
+library(kableExtra)
+library(stringr)
+library(dplyr)
+
+filenames <- list.files("thumbs/") %>% str_remove("thumb_")
+clf <- read.csv("../../API_tests/catal_sample_Clarifi_predictions.csv")
+```
+
+# CP Label: "people"
+
+```{r, echo=FALSE, results='asis'}
+
+# filter from subset 
+
+imgs <- clf %>% 
+  filter(name == "people",
+         value > 0.95) %>% 
+  # create the pointer to the thumb
+  mutate(img = sprintf('![](./thumbs/thumb_%s)', file_name)) %>% 
+  select(img) 
+
+# make it two cols << very inelegant fiddling! [add , "" for uneven]
+data.frame(col1 = imgs[1:65,], col2 = c(imgs[66:130,])) %>% 
+  kable(caption = "'people' - confidence score > 0.95")
+
+```
+  
+

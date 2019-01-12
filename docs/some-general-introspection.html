@@ -1,0 +1,4738 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Catal Image Vision API Tests</title>
+  <meta name="description" content="Tests of Catal images with vision cloud APIs to describe content">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Catal Image Vision API Tests" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Tests of Catal images with vision cloud APIs to describe content" />
+  <meta name="github-repo" content="cengel/Catal-Vision-API" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Catal Image Vision API Tests" />
+  
+  <meta name="twitter:description" content="Tests of Catal images with vision cloud APIs to describe content" />
+  
+
+<meta name="author" content="Claudia A Engel">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="ocr-images-with-extracted-text.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Catal Vision API Tests</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Intro</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#comments-ideas-in-random-order"><i class="fa fa-check"></i><b>0.1</b> Comments, ideas in random order</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="some-general-introspection.html"><a href="some-general-introspection.html"><i class="fa fa-check"></i><b>1</b> Some general introspection</a><ul>
+<li class="chapter" data-level="1.1" data-path="some-general-introspection.html"><a href="some-general-introspection.html#frequency-of-all-labels"><i class="fa fa-check"></i><b>1.1</b> Frequency of all labels</a></li>
+<li class="chapter" data-level="1.2" data-path="some-general-introspection.html"><a href="some-general-introspection.html#frequency-of-unique-labels"><i class="fa fa-check"></i><b>1.2</b> Frequency of unique labels</a></li>
+<li class="chapter" data-level="1.3" data-path="some-general-introspection.html"><a href="some-general-introspection.html#distribution-of-scores"><i class="fa fa-check"></i><b>1.3</b> Distribution of scores</a></li>
+<li class="chapter" data-level="1.4" data-path="some-general-introspection.html"><a href="some-general-introspection.html#top-ranking-labels-on-average"><i class="fa fa-check"></i><b>1.4</b> Top ranking labels (on average)</a></li>
+<li class="chapter" data-level="1.5" data-path="some-general-introspection.html"><a href="some-general-introspection.html#score-distribution-for-those-top-ranking-labels"><i class="fa fa-check"></i><b>1.5</b> Score distribution for those top ranking labels</a></li>
+<li class="chapter" data-level="1.6" data-path="some-general-introspection.html"><a href="some-general-introspection.html#most-used-labels-more-than-50-times-and-their-mean-scores"><i class="fa fa-check"></i><b>1.6</b> Most used labels (more than 50 times) and their mean scores</a></li>
+<li class="chapter" data-level="1.7" data-path="some-general-introspection.html"><a href="some-general-introspection.html#highest-scoring-labels-gv-over-0.8-cp-over-.95-and-their-frequency"><i class="fa fa-check"></i><b>1.7</b> Highest scoring labels (GV over 0.8, CP over .95) and their frequency</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ocr-images-with-extracted-text.html"><a href="ocr-images-with-extracted-text.html"><i class="fa fa-check"></i><b>2</b> OCR images with extracted text</a></li>
+<li class="chapter" data-level="3" data-path="cp-label-adult.html"><a href="cp-label-adult.html"><i class="fa fa-check"></i><b>3</b> CP Label: “adult”</a></li>
+<li class="chapter" data-level="4" data-path="cp-label-architecture.html"><a href="cp-label-architecture.html"><i class="fa fa-check"></i><b>4</b> CP Label: “architecture”</a></li>
+<li class="chapter" data-level="5" data-path="cp-label-building.html"><a href="cp-label-building.html"><i class="fa fa-check"></i><b>5</b> CP Label: “building”</a></li>
+<li class="chapter" data-level="6" data-path="cp-label-cave.html"><a href="cp-label-cave.html"><i class="fa fa-check"></i><b>6</b> CP Label: “cave”</a></li>
+<li class="chapter" data-level="7" data-path="cp-label-cement.html"><a href="cp-label-cement.html"><i class="fa fa-check"></i><b>7</b> CP Label: “cement”</a></li>
+<li class="chapter" data-level="8" data-path="cp-label-dirty.html"><a href="cp-label-dirty.html"><i class="fa fa-check"></i><b>8</b> CP Label: “dirty”</a></li>
+<li class="chapter" data-level="9" data-path="cp-label-geology.html"><a href="cp-label-geology.html"><i class="fa fa-check"></i><b>9</b> CP Label: “geology”</a></li>
+<li class="chapter" data-level="10" data-path="cp-label-group.html"><a href="cp-label-group.html"><i class="fa fa-check"></i><b>10</b> CP Label: “group”</a></li>
+<li class="chapter" data-level="11" data-path="cp-label-man.html"><a href="cp-label-man.html"><i class="fa fa-check"></i><b>11</b> CP Label: “man”</a></li>
+<li class="chapter" data-level="12" data-path="cp-label-no-person.html"><a href="cp-label-no-person.html"><i class="fa fa-check"></i><b>12</b> CP Label: “no person”</a></li>
+<li class="chapter" data-level="13" data-path="cp-label-people.html"><a href="cp-label-people.html"><i class="fa fa-check"></i><b>13</b> CP Label: “people”</a></li>
+<li class="chapter" data-level="14" data-path="cp-label-rock.html"><a href="cp-label-rock.html"><i class="fa fa-check"></i><b>14</b> CP Label: “rock”</a></li>
+<li class="chapter" data-level="15" data-path="cp-label-sand.html"><a href="cp-label-sand.html"><i class="fa fa-check"></i><b>15</b> CP Label: “sand”</a></li>
+<li class="chapter" data-level="16" data-path="cp-label-soil.html"><a href="cp-label-soil.html"><i class="fa fa-check"></i><b>16</b> CP Label: “soil”</a></li>
+<li class="chapter" data-level="17" data-path="cp-label-stone.html"><a href="cp-label-stone.html"><i class="fa fa-check"></i><b>17</b> CP Label: “stone”</a></li>
+<li class="chapter" data-level="18" data-path="cp-label-texture.html"><a href="cp-label-texture.html"><i class="fa fa-check"></i><b>18</b> CP Label: “texture”</a></li>
+<li class="chapter" data-level="19" data-path="cp-label-travel.html"><a href="cp-label-travel.html"><i class="fa fa-check"></i><b>19</b> CP Label: “travel”</a></li>
+<li class="chapter" data-level="20" data-path="cp-label-wall.html"><a href="cp-label-wall.html"><i class="fa fa-check"></i><b>20</b> CP Label: “wall”</a></li>
+<li class="chapter" data-level="21" data-path="cp-label-woman.html"><a href="cp-label-woman.html"><i class="fa fa-check"></i><b>21</b> CP Label: “woman”</a></li>
+<li class="chapter" data-level="22" data-path="gv-entity-archaeology.html"><a href="gv-entity-archaeology.html"><i class="fa fa-check"></i><b>22</b> GV Entity: “Archaeology”</a></li>
+<li class="chapter" data-level="23" data-path="gv-entity-catalhoyuk.html"><a href="gv-entity-catalhoyuk.html"><i class="fa fa-check"></i><b>23</b> GV Entity: “Çatalhöyük”</a></li>
+<li class="chapter" data-level="24" data-path="gv-entity-laborer.html"><a href="gv-entity-laborer.html"><i class="fa fa-check"></i><b>24</b> GV Entity: “Laborer”</a></li>
+<li class="chapter" data-level="25" data-path="gv-label-ancient-history.html"><a href="gv-label-ancient-history.html"><i class="fa fa-check"></i><b>25</b> GV Label: “ancient history”</a></li>
+<li class="chapter" data-level="26" data-path="gv-label-archaeology.html"><a href="gv-label-archaeology.html"><i class="fa fa-check"></i><b>26</b> GV Label: “archaeology”</a></li>
+<li class="chapter" data-level="27" data-path="gv-label-archaeological-site.html"><a href="gv-label-archaeological-site.html"><i class="fa fa-check"></i><b>27</b> GV Label: “archaeological site”</a></li>
+<li class="chapter" data-level="28" data-path="gv-label-artifact.html"><a href="gv-label-artifact.html"><i class="fa fa-check"></i><b>28</b> GV Label: “artifact”</a></li>
+<li class="chapter" data-level="29" data-path="gv-label-building.html"><a href="gv-label-building.html"><i class="fa fa-check"></i><b>29</b> GV Label: “building”</a></li>
+<li class="chapter" data-level="30" data-path="gv-label-fauna.html"><a href="gv-label-fauna.html"><i class="fa fa-check"></i><b>30</b> GV Label: “fauna”</a></li>
+<li class="chapter" data-level="31" data-path="gv-label-geology.html"><a href="gv-label-geology.html"><i class="fa fa-check"></i><b>31</b> GV Label: “geology”</a></li>
+<li class="chapter" data-level="32" data-path="gv-label-rock.html"><a href="gv-label-rock.html"><i class="fa fa-check"></i><b>32</b> GV Label: “rock”</a></li>
+<li class="chapter" data-level="33" data-path="gv-label-ruins.html"><a href="gv-label-ruins.html"><i class="fa fa-check"></i><b>33</b> GV Label: “ruins”</a></li>
+<li class="chapter" data-level="34" data-path="gv-label-sand.html"><a href="gv-label-sand.html"><i class="fa fa-check"></i><b>34</b> GV Label: “sand”</a></li>
+<li class="chapter" data-level="35" data-path="gv-label-social-group.html"><a href="gv-label-social-group.html"><i class="fa fa-check"></i><b>35</b> GV Label: “social group”</a></li>
+<li class="chapter" data-level="36" data-path="gv-label-soil.html"><a href="gv-label-soil.html"><i class="fa fa-check"></i><b>36</b> GV Label: “soil”</a></li>
+<li class="chapter" data-level="37" data-path="gv-label-structure.html"><a href="gv-label-structure.html"><i class="fa fa-check"></i><b>37</b> GV Label: “structure”</a></li>
+<li class="chapter" data-level="38" data-path="gv-label-wall.html"><a href="gv-label-wall.html"><i class="fa fa-check"></i><b>38</b> GV Label: “wall”</a></li>
+<li class="chapter" data-level="39" data-path="images-1-100.html"><a href="images-1-100.html"><i class="fa fa-check"></i><b>39</b> Images 1-100</a></li>
+<li class="chapter" data-level="40" data-path="images-101-200.html"><a href="images-101-200.html"><i class="fa fa-check"></i><b>40</b> Images 101-200</a></li>
+<li class="chapter" data-level="41" data-path="images-201-300.html"><a href="images-201-300.html"><i class="fa fa-check"></i><b>41</b> Images 201-300</a></li>
+<li class="chapter" data-level="42" data-path="images-301-400.html"><a href="images-301-400.html"><i class="fa fa-check"></i><b>42</b> Images 301-400</a></li>
+<li class="chapter" data-level="43" data-path="images-401-500.html"><a href="images-401-500.html"><i class="fa fa-check"></i><b>43</b> Images 401-500</a></li>
+<li class="chapter" data-level="44" data-path="images-501-600.html"><a href="images-501-600.html"><i class="fa fa-check"></i><b>44</b> Images 501-600</a></li>
+<li class="chapter" data-level="45" data-path="images-601-700.html"><a href="images-601-700.html"><i class="fa fa-check"></i><b>45</b> Images 601-700</a></li>
+<li class="chapter" data-level="46" data-path="images-701-766.html"><a href="images-701-766.html"><i class="fa fa-check"></i><b>46</b> Images 701-766</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Catal Image Vision API Tests</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="some-general-introspection" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Some general introspection</h1>
+<p>Three types of results from Google Vision API:</p>
+<ul>
+<li><code>GV_label</code> broad sets of objects (with probabilities)</li>
+<li><code>GV_entity</code> uses Google Image Search to find topical entities (with probablities)</li>
+<li><code>GV_ocr</code> for Optical Character Recognition of text</li>
+</ul>
+<p><code>GV_entity</code> and <code>GV_label</code> receive a <code>score</code> as a measure for how confident Google is about this.</p>
+<p>One type of results from Clarifai Predict API:</p>
+<ul>
+<li><code>CP_label</code> “concepts with corresponding probabilities of how likely it is these concepts are contained within the image”</li>
+</ul>
+<div id="frequency-of-all-labels" class="section level2">
+<h2><span class="header-section-number">1.1</span> Frequency of all labels</h2>
+<p><img src="API-demos_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="frequency-of-unique-labels" class="section level2">
+<h2><span class="header-section-number">1.2</span> Frequency of unique labels</h2>
+<p><img src="API-demos_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="distribution-of-scores" class="section level2">
+<h2><span class="header-section-number">1.3</span> Distribution of scores</h2>
+<p>Range of scores:</p>
+<ul>
+<li>GV entity: <code>range(c_gviz_sub$score[which (c_gviz_sub$type == &quot;entity&quot;)])</code></li>
+<li>GV label: <code>range(c_gviz_sub$score[which (c_gviz_sub$type == &quot;label&quot;)])</code></li>
+<li>CP name: <code>range(clf$value)</code></li>
+</ul>
+<p><img src="API-demos_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="top-ranking-labels-on-average" class="section level2">
+<h2><span class="header-section-number">1.4</span> Top ranking labels (on average)</h2>
+<p>Number of labels with <strong>mean</strong> score of .8 or higher:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:right;">
+607
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_entity
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:right;">
+62
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="score-distribution-for-those-top-ranking-labels" class="section level2">
+<h2><span class="header-section-number">1.5</span> Score distribution for those top ranking labels</h2>
+<p>NOTE: There can be labels that are only mentioned very rarely, but scored high in confidence. Ns added to the plots.</p>
+<p>For Clarifai Preditions [CP] only top labels with mean score of <strong>.95</strong> or higher (N = 31).</p>
+<p><img src="API-demos_files/figure-html/unnamed-chunk-6-1.png" width="672" /><img src="API-demos_files/figure-html/unnamed-chunk-6-2.png" width="672" /><img src="API-demos_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+</div>
+<div id="most-used-labels-more-than-50-times-and-their-mean-scores" class="section level2">
+<h2><span class="header-section-number">1.6</span> Most used labels (more than 50 times) and their mean scores</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:right;">
+mean_score
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+no person
+</td>
+<td style="text-align:right;">
+670
+</td>
+<td style="text-align:right;">
+0.9797910
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+442
+</td>
+<td style="text-align:right;">
+0.9215385
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+stone
+</td>
+<td style="text-align:right;">
+439
+</td>
+<td style="text-align:right;">
+0.9178132
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+dirty
+</td>
+<td style="text-align:right;">
+417
+</td>
+<td style="text-align:right;">
+0.9257794
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+travel
+</td>
+<td style="text-align:right;">
+415
+</td>
+<td style="text-align:right;">
+0.9055904
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+architecture
+</td>
+<td style="text-align:right;">
+357
+</td>
+<td style="text-align:right;">
+0.9202801
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+outdoors
+</td>
+<td style="text-align:right;">
+343
+</td>
+<td style="text-align:right;">
+0.8917493
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+wall
+</td>
+<td style="text-align:right;">
+304
+</td>
+<td style="text-align:right;">
+0.9121711
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+building
+</td>
+<td style="text-align:right;">
+290
+</td>
+<td style="text-align:right;">
+0.9130690
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+278
+</td>
+<td style="text-align:right;">
+0.9182014
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+old
+</td>
+<td style="text-align:right;">
+276
+</td>
+<td style="text-align:right;">
+0.8867391
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+one
+</td>
+<td style="text-align:right;">
+263
+</td>
+<td style="text-align:right;">
+0.9039924
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+people
+</td>
+<td style="text-align:right;">
+261
+</td>
+<td style="text-align:right;">
+0.9231801
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+industry
+</td>
+<td style="text-align:right;">
+251
+</td>
+<td style="text-align:right;">
+0.8865339
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+249
+</td>
+<td style="text-align:right;">
+0.8951406
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+ancient
+</td>
+<td style="text-align:right;">
+249
+</td>
+<td style="text-align:right;">
+0.8971888
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+daylight
+</td>
+<td style="text-align:right;">
+240
+</td>
+<td style="text-align:right;">
+0.8864167
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+desktop
+</td>
+<td style="text-align:right;">
+233
+</td>
+<td style="text-align:right;">
+0.8881116
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+218
+</td>
+<td style="text-align:right;">
+0.9077523
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+218
+</td>
+<td style="text-align:right;">
+0.8983028
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+cement
+</td>
+<td style="text-align:right;">
+213
+</td>
+<td style="text-align:right;">
+0.9102817
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+concrete
+</td>
+<td style="text-align:right;">
+204
+</td>
+<td style="text-align:right;">
+0.9042157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+environment
+</td>
+<td style="text-align:right;">
+204
+</td>
+<td style="text-align:right;">
+0.8819608
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+calamity
+</td>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:right;">
+0.9009901
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+indoors
+</td>
+<td style="text-align:right;">
+198
+</td>
+<td style="text-align:right;">
+0.8920707
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+desert
+</td>
+<td style="text-align:right;">
+192
+</td>
+<td style="text-align:right;">
+0.9014583
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+nature
+</td>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:right;">
+0.8873224
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+expression
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+0.9064000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+texture
+</td>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:right;">
+0.9040476
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+cave
+</td>
+<td style="text-align:right;">
+165
+</td>
+<td style="text-align:right;">
+0.9269697
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+subway system
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+0.9223125
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+mine
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:right;">
+0.8894937
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+empty
+</td>
+<td style="text-align:right;">
+154
+</td>
+<td style="text-align:right;">
+0.8824675
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+rough
+</td>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:right;">
+0.8914570
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+retro
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+0.8795862
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+water
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:right;">
+0.8866187
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+adult
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+0.9471852
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+abandoned
+</td>
+<td style="text-align:right;">
+133
+</td>
+<td style="text-align:right;">
+0.8850376
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+wear
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+0.8799187
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+art
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+0.8579339
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+mud
+</td>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:right;">
+0.8952586
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+man
+</td>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:right;">
+0.9398246
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+abstract
+</td>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:right;">
+0.8948673
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+exploration
+</td>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:right;">
+0.8816667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+pattern
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+0.9020652
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+construction
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+0.9050575
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+two
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+0.8889655
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+seashore
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+0.8874419
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+woman
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+0.9238462
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+road
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+0.8774026
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+limestone
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+0.9012000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+paper
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+0.8938667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+religion
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+0.8879730
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+sculpture
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+0.8832394
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+wood
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+0.8414286
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+food
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+0.8801449
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+group
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+0.9259420
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+tunnel
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+0.9182609
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+recreation
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+0.8886765
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+family
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+0.8740299
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+dark
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+0.8403077
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+child
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+0.9304839
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+still life
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+0.8585484
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+dust
+</td>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:right;">
+0.8803279
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+home
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+0.8893220
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+hole
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+0.8931579
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+business
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+0.8680357
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+beach
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+0.9005455
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+0.8833962
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CP_label
+</td>
+<td style="text-align:left;">
+room
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+0.8864151
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_entity
+</td>
+<td style="text-align:left;">
+Soil
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+0.5528611
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_entity
+</td>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+327
+</td>
+<td style="text-align:right;">
+0.7094190
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_entity
+</td>
+<td style="text-align:left;">
+History
+</td>
+<td style="text-align:right;">
+284
+</td>
+<td style="text-align:right;">
+0.4787324
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_entity
+</td>
+<td style="text-align:left;">
+Ancient history
+</td>
+<td style="text-align:right;">
+281
+</td>
+<td style="text-align:right;">
+0.4510320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_entity
+</td>
+<td style="text-align:left;">
+Archaeological site
+</td>
+<td style="text-align:right;">
+237
+</td>
+<td style="text-align:right;">
+0.6183544
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_entity
+</td>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+144
+</td>
+<td style="text-align:right;">
+0.6234028
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_entity
+</td>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:right;">
+0.6414035
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_entity
+</td>
+<td style="text-align:left;">
+Wadi
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+0.2995349
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_entity
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+0.4000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+442
+</td>
+<td style="text-align:right;">
+0.7854977
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+438
+</td>
+<td style="text-align:right;">
+0.7047945
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+367
+</td>
+<td style="text-align:right;">
+0.7064033
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+357
+</td>
+<td style="text-align:right;">
+0.6711485
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+285
+</td>
+<td style="text-align:right;">
+0.7209825
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+278
+</td>
+<td style="text-align:right;">
+0.6617626
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+241
+</td>
+<td style="text-align:right;">
+0.7300830
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+formation
+</td>
+<td style="text-align:right;">
+177
+</td>
+<td style="text-align:right;">
+0.6158757
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+history
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+0.6526087
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:right;">
+0.5998246
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+bedrock
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:right;">
+0.6481818
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+ruins
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+0.7242308
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+0.5571277
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+wall
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+0.8289286
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+artifact
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+0.7053968
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GV_label
+</td>
+<td style="text-align:left;">
+concrete
+</td>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:right;">
+0.5429508
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="highest-scoring-labels-gv-over-0.8-cp-over-.95-and-their-frequency" class="section level2">
+<h2><span class="header-section-number">1.7</span> Highest scoring labels (GV over 0.8, CP over .95) and their frequency</h2>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-8">Table 1.1: </span>GV Label
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+archaeological site
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ancient history
+</td>
+<td style="text-align:right;">
+86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wall
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ruins
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+artifact
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+structure
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bedrock
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+history
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sky
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+text
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+brown
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+architecture
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fauna
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+historic site
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+stone carving
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+field
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+light
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tree
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+atmosphere
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+badlands
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+black
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ecosystem
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+vehicle
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yellow
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+black and white
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+building
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fashion accessory
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+font
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+girl
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+man
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mineral
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+prairie
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+water
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aerial photography
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+car
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cliff dwelling
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cloud
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+construction
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+darkness
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fault
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+floor
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grassland
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+outcrop
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+person
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+photograph
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+plain
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+plant
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+road
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+room
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+social group
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+vacation
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+beach
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+beam
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+beauty
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bird’s eye view
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bottle
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cave
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+climbing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+community
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+construction worker
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cumulus
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+daylighting
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+daytime
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+exhibition
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+eyewear
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+facial expression
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+finger
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+floor plan
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+flooring
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+food
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+foundation
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+freezing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fun
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+geological phenomenon
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+glasses
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grass
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grass family
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hand
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+headgear
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+highland
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+horizon
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+human hair color
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+infrastructure
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+local food
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mammal
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+market
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mast
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+meteorological phenomenon
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mode of transport
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+morning
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mortuary temple
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+night
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+orange
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+path
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+people
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+phragmites
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pink
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+plaid
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+plan
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+plaster
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+produce
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+property
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rainbow
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+reflection
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+relief
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sail
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sailing ship
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+senior citizen
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sitting
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+smile
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+snapshot
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+snow
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sport climbing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+standing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tall ship
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tartan
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+transport
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+vision care
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wadi
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wilderness
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wood
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+youth
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-8">Table 1.1: </span>GV Entity
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Archaeology
+</td>
+<td style="text-align:right;">
+155
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Çatalhöyük
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Laborer
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Car
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Neolithic
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Geology
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Outcrop
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Art
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Art exhibition
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Art museum
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Boulder
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brigantine
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brooch
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Earring
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Escuela de Aviación Militar Airport
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Facial hair
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Floor
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Floor plan
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Free University of Berlin
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glass bottle
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gobustan National Park
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Konya Archaeological Museum
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Museum of Anatolian Civilizations
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paper
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Plucked string instrument
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Poster
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rear-view mirror
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sail
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sport climbing
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Street
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sweet Grass
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+University of Kiel
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Vegetable
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:unnamed-chunk-8">Table 1.1: </span>GCP Label
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+value
+</th>
+<th style="text-align:right;">
+n
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+no person
+</td>
+<td style="text-align:right;">
+603
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dirty
+</td>
+<td style="text-align:right;">
+155
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rock
+</td>
+<td style="text-align:right;">
+138
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+people
+</td>
+<td style="text-align:right;">
+126
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+stone
+</td>
+<td style="text-align:right;">
+123
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+architecture
+</td>
+<td style="text-align:right;">
+118
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+adult
+</td>
+<td style="text-align:right;">
+82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+travel
+</td>
+<td style="text-align:right;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sand
+</td>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+building
+</td>
+<td style="text-align:right;">
+73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wall
+</td>
+<td style="text-align:right;">
+73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+one
+</td>
+<td style="text-align:right;">
+73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cave
+</td>
+<td style="text-align:right;">
+66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+man
+</td>
+<td style="text-align:right;">
+61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+subway system
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+geology
+</td>
+<td style="text-align:right;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cement
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+texture
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+desktop
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+landscape
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+desert
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+concrete
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ancient
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+expression
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+group
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+indoors
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+woman
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+soil
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+calamity
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+old
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+industry
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+outdoors
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+child
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+nature
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+food
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rough
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+two
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tunnel
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sculpture
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+abstract
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pattern
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+paper
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+daylight
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+beach
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wear
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mud
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+water
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mine
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sky
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+empty
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hole
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+construction
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+limestone
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+recreation
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+road
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+room
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Earth surface
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+retro
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+environment
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+seashore
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+furniture
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+abandoned
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+art
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+home
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+light
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+portrait
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+vehicle
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+exploration
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+religion
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+family
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+house
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mammal
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+storm
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+winter
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+business
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fabric
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+agriculture
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+archaeology
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+astronomy
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+design
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+farm
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+field
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+interior design
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+moon
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+snow
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+tree
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+window
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wood
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+background
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ball-shaped
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fish
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+glass items
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ground
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+inside
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lid
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+modern
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+seat
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+site
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+skill
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+still life
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sunset
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+togetherness
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+transportation system
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+brick
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ceiling
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+facial expression
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fun
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hand
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+museum
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+danger
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dark
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dawn
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dry
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+education
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grow
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+many
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+marble
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+solid
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+trading floor
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wallpaper
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+weather
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+apartment
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bone
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+car
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+construction worker
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+exhibition
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+flora
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+garden
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+girl
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grass
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ice
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+illustration
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+leaf
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+leisure
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+market
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+painting
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pasture
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rainbow
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+roof
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rope
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sail
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sailboat
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ship
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+steel
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+table
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+technology
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+text
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+watercraft
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+action
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+aircraft
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+airplane
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+airport
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+backlit
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+balance
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+barrel
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bathroom
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bathtub
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+battle
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bird
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+broken
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cane
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cardboard
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+carpentry
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+city
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cold
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+color
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+competition
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+computer
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+container
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+contemporary
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+currency
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+demolition
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+desk
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dig
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+document
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+driver
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+earthquake
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+finance
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+flood
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+frame
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+futuristic
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+geometric
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+graphic
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+group together
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+growth
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+happiness
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hurricane
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+initiation
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+insubstantial
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+invertebrate
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+level plane
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lifestyle
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+money
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+offense
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+office
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+parchment
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pavement
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+perspective
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pollution
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+prehistoric
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+reed
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rural
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+scale
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+school
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+seafood
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+several
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+signalise
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+skull
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+stucco
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+summer
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+three
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+vector
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+vehicle window
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+veil
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+volcano
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+war
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+waste
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wealth
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+wheat
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+worn
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+yacht
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ocr-images-with-extracted-text.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/cengel/Catal-Vision-API/edit/master/01_stats.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

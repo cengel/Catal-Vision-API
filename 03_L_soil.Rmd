@@ -11,7 +11,7 @@ c_gviz_sub <- read.csv("../../API_tests/catal_sample_1000_GV_output.csv") %>%   
     filter(filename %in% filenames) # keep only subset of 766 we actually have thumbnail images of
 ```
 
-# Label: "soil"
+# GV Label: "soil"
 
 ```{r, echo=FALSE, results='asis'}
 

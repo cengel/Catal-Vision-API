@@ -10,44 +10,82 @@ library(kableExtra)
 filenames <- list.files("thumbs/") %>% str_remove("thumb_")
 c_gviz_sub <- read.csv("../../API_tests/catal_sample_1000_GV_output.csv") %>%   # read peter's data here 
     filter(filename %in% filenames) # keep only subset of 766 we actually have thumbnail images of
+clf <- read.csv("../../API_tests/catal_sample_Clarifi_predictions.csv")
+
+tdf <- clf %>% 
+  rename(score = value,         # renaming 
+         value = name,
+         filename = file_name) %>%
+  mutate(type = "CP_label",     # add type: CP_label
+         score = round(score, 2)) %>% # reduce to 2 digits
+  select(type, value, score, filename)
+
+preds <- c_gviz_sub %>% # combine for summary stats below
+  mutate(type = as.character(type), # renaming
+         type = ifelse(type == "entity", "GV_entity", (ifelse(type == "label", "GV_label", "GV_ocr")))) %>% 
+  select(type, value, score, filename) %>% 
+  rbind(tdf)
 ```
 
-# Some generic introspection
+# Some general introspection
 
 Three types of results from Google Vision API:
 
-- `label` detect broad sets of objects based
-- `entity` uses Google Image Search to find topical entities 
-- `ocr` for Optical Character Recognition of text
+- `GV_label` broad sets of objects (with probabilities)
+- `GV_entity` uses Google Image Search to find topical entities  (with probablities)
+- `GV_ocr` for Optical Character Recognition of text
 
-`entity` and `label` receive a `score` as a measure for how confident Google is about this.
+`GV_entity` and `GV_label` receive a `score` as a measure for how confident Google is about this.
 
-## Frequency of labels 
 
-```{r}
-ggplot(c_gviz_sub, aes(type)) + geom_bar()
+One type of results from Clarifai Predict API:
+
+- `CP_label` "concepts with corresponding probabilities of how likely it is these concepts are contained within the image"
+
+
+## Frequency of all labels
+
+```{r, fig.height=2}
+ggplot(preds, aes(type)) + geom_bar()
 ```
 
-## Distribution of probablity scores
+## Frequency of unique labels
 
-Mean score overall: `r mean(c_gviz_sub$score, na.rm = T)`. 
+```{r, fig.height=2}
+preds %>% 
+  group_by(type) %>% 
+  summarise(ndist = n_distinct(value)) %>% 
+  ggplot(aes(type, ndist)) + geom_col()
+```
 
-```{r, warning=FALSE, fig.height=4}
-c_gviz_sub %>% 
-  filter(type != 'ocr') %>% 
+
+## Distribution of scores
+
+Range of scores:
+
+- GV entity: `range(c_gviz_sub$score[which (c_gviz_sub$type == "entity")])`
+- GV label: `range(c_gviz_sub$score[which (c_gviz_sub$type == "label")])`
+- CP name: `range(clf$value)`
+
+
+
+```{r, warning=FALSE, fig.height=6}
+
+# add cfl$type in and rename
+preds %>% 
+  filter(type != 'GV_ocr') %>% 
   ggplot(aes(score)) + 
     geom_bar() +
-    #geom_vline(aes(xintercept = mean(score, na.rm = T)), color = "orange") + 
-    facet_wrap(~type, nrow = 2)
+    facet_wrap(~type, nrow = 3)
 ```
 
 
-## Top ranking labels
+## Top ranking labels (on average)
 
-Number of lables with mean score of .8 or higher:
+Number of labels with __mean__ score of .8 or higher:
 
 ```{r}
-c_gviz_sub %>% 
+preds %>% 
   group_by(type, value) %>% 
   summarise(mean_score = mean(score, na.rm = T)) %>% # this eliminates 'ocr' which has NA score 
   filter(mean_score >= .8) %>% 
@@ -58,7 +96,9 @@ c_gviz_sub %>%
 
 ## Score distribution for those top ranking labels
 
-NOTE: There can be labels that are only mentioned very rarely, but scored high. Ns added to the plots. 
+NOTE: There can be labels that are only mentioned very rarely, but scored high in confidence. Ns added to the plots. 
+
+For Clarifai Preditions [CP] only top labels with mean score of **.95** or higher (N = 31).
 
 ```{r, fig.height=8}
 # get top lables 
@@ -77,7 +117,7 @@ c_gviz_sub %>%
     geom_boxplot() +
     geom_text(aes(y = .22)) +
     coord_flip() +
-    ggtitle("entities with scores of .8 or higher") +
+    ggtitle("GV entities with scores of .8 or higher") +
     xlab("")
 
 # plot for label
@@ -89,7 +129,24 @@ c_gviz_sub %>%
     geom_boxplot() +
     geom_text(aes(y = .6)) +
     coord_flip() +
-    ggtitle("labels with scores of .8 or higher") +
+    ggtitle("GV labels with scores of .8 or higher") +
+    xlab("")
+
+# plot for Clarifai
+clf_top_labels <- clf %>% 
+  group_by(name) %>% 
+  summarise(mean_score = mean(value),
+            N = n()) %>% 
+  filter(mean_score >= .95) 
+
+clf %>% 
+  filter(name %in% clf_top_labels$name) %>% 
+  left_join(clf_top_labels, by = "name")  %>% 
+  ggplot(aes(x=reorder(name, N), y=value, label = N)) + 
+    geom_boxplot() +
+    geom_text(aes(y = .6)) +
+    coord_flip() +
+    ggtitle("CP labels with scores of .95 or higher") +
     xlab("")
 ```
 
@@ -97,33 +154,37 @@ c_gviz_sub %>%
 ## Most used labels (more than 50 times) and their mean scores
 
 ```{r}
-c_gviz_sub %>% 
-  filter(type != 'ocr') %>% 
+preds %>% 
+  filter(type != 'GV_ocr') %>% 
   group_by(type, value) %>% 
   summarize(N = n(),
             mean_score = mean(score, na.rm = T)) %>% 
   filter(N > 50) %>% 
-  arrange(desc(N)) %>% 
+  arrange(type, desc(N)) %>% 
   kable()
  
 ```
 
 
-## Highest scoring labels (over 0.8) and their frequency
+## Highest scoring labels (GV over 0.8, CP over .95) and their frequency
 
 ```{r}
-c_gviz_sub %>% 
-  filter(score > 0.8, type == "label") %>% 
-  #group_by(type, value) %>% 
+preds %>% 
+  filter(score > 0.8, type == "GV_label") %>% 
   count(value) %>% 
   arrange(desc(n)) %>% 
-  kable(caption = "Label")
+  kable(caption = "GV Label")
 
-c_gviz_sub %>% 
-  filter(score > 0.8, type == "entity") %>% 
-  #group_by(type, value) %>% 
+preds %>% 
+  filter(score > 0.8, type == "GV_entity") %>% 
   count(value) %>% 
   arrange(desc(n)) %>% 
-  kable(caption = "Entity")
+  kable(caption = "GV Entity")
+
+preds %>% 
+  filter(score > 0.95, type == "CP_label") %>% 
+  count(value) %>% 
+  arrange(desc(n)) %>% 
+  kable(caption = "GCP Label")
 ```
 

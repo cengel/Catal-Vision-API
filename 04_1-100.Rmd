@@ -6,9 +6,29 @@ library(kableExtra)
 library(stringr)
 library(dplyr)
 
-c_gviz <- read.csv("../../API_tests/catal_sample_1000_GV_output.csv") # read peter's data here
-thumbs <- list.files("thumbs/") # take first 100 > make 10 pages.
-filenames <- str_remove(thumbs, "thumb_")
+#c_gviz <- read.csv("../../API_tests/catal_sample_1000_GV_output.csv") # read peter's data here
+#thumbs <- list.files("thumbs/") # take first 100 > make 10 pages.
+#filenames <- str_remove(thumbs, "thumb_")
+filenames <- list.files("thumbs/") %>% str_remove("thumb_")
+
+c_gviz_sub <- read.csv("../../API_tests/catal_sample_1000_GV_output.csv") %>%   
+    filter(filename %in% filenames) # read peter's data and keep keep subset of 766 we have thumbnails of
+
+clf <- read.csv("../../API_tests/catal_sample_Clarifi_predictions.csv")
+
+tdf <- clf %>% 
+  rename(score = value,     # renaming 
+         value = name,
+         filename = file_name) %>%
+  mutate(type = "CP_label",     # add type: CP_label
+         score = round(score, 2)) %>% # reduce to 2 digits
+  select(type, value, score, filename)
+
+preds <- c_gviz_sub %>% 
+  mutate(type = as.character(type), # renaming
+         type = ifelse(type == "entity", "GV_entity", (ifelse(type == "label", "GV_label", "GV_ocr")))) %>% 
+  select(type, value, score, filename) %>% 
+  rbind(tdf) # combine CP and GV
 ```
 
 # Images 1-100 
@@ -20,8 +40,8 @@ filenames <- str_remove(thumbs, "thumb_")
 # https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
 
 for(f in filenames[1:100]){
-  c_gviz %>% 
-    filter(filename == f) %>%   # select subset
+  preds %>% 
+    filter(filename == f) %>%   # select one image
     # add pointer to thumb
     mutate(img = sprintf('![](./thumbs/thumb_%s)', f)) %>% 
     select(-filename) %>%  # remove image name, we'll put it in the caption
