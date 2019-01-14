@@ -1,0 +1,56 @@
+```{r, echo=FALSE, purl=FALSE, message=FALSE}
+#knitr::opts_chunk$set(results='hide', comment = "#>", purl = FALSE)
+
+library(knitr)
+library(kableExtra)
+library(stringr)
+library(dplyr)
+
+filenames <- list.files("thumbs/") %>% str_remove("thumb_")
+c_gviz_sub <- read.csv("../../API_tests/catal_sample_1000_GV_output.csv") %>%   # read peter's data here 
+    filter(filename %in% filenames) # keep only subset of 766 we actually have thumbnail images of
+
+clf <- read.csv("../../API_tests/catal_sample_Clarifi_predictions.csv")
+
+tdf <- clf %>% 
+  rename(score = value,         # renaming 
+         value = name,
+         filename = file_name) %>%
+  mutate(type = "CP_label",     # add type: CP_label
+         score = round(score, 2)) %>% # reduce to 2 digits
+  select(type, value, score, filename)
+
+preds <- c_gviz_sub %>% # combine for summary stats below
+  mutate(type = as.character(type), # renaming
+         type = ifelse(type == "entity", "GV_entity", (ifelse(type == "label", "GV_label", "GV_ocr")))) %>% 
+  select(type, value, score, filename) %>% 
+  rbind(tdf)
+```
+
+# CP AND GV Label: "wall"
+
+```{r, echo=FALSE, results='asis'}
+
+term = "wall"
+
+# filter from subset 
+imgs <- preds %>% 
+  filter(type %in% c("GV_label", "CP_label"), 
+         value == term,
+         score > 0.8) %>% 
+  # create the pointer to the thumb
+  mutate(img = sprintf('![](./thumbs/thumb_%s)', filename)) %>% 
+  select(img) 
+
+# make it two cols << very inelegant fiddling! [add , "" for uneven]
+if (nrow(imgs) %% 2 == 0) { # even
+  data.frame(col1 = imgs[1:(nrow(imgs)/2),], col2 = c(imgs[(nrow(imgs)/2 + 1):nrow(imgs),])) %>% 
+    kable(caption = paste0("'",term,"' - confidence score > 0.8"))
+} else { # odd
+  data.frame(col1 = imgs[1:ceiling(nrow(imgs)/2),], col2 = c(imgs[ceiling(nrow(imgs)/2) + 1 :nrow(imgs),], "")) %>% 
+    kable(caption = paste0("'",term,"' - confidence score > 0.8"))
+}
+
+```
+  
+

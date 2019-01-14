@@ -3,6 +3,7 @@ knitr::opts_chunk$set(echo=FALSE, comment = "#>")
 
 library(stringr)
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 library(knitr)
 library(kableExtra)
@@ -188,3 +189,15 @@ preds %>%
   kable(caption = "GCP Label")
 ```
 
+## Labels occuring in both sets: GV and CP
+
+```{r}
+preds %>%
+  filter(type %in% c("GV_label", "CP_label")) %>% 
+  group_by(value, type) %>% 
+  tally() %>% 
+  spread(type, n) %>%      # spread the above table by type, 
+  drop_na() %>%            # only take rows that don't have NAs
+  # arrange(desc(GV_label)) %>% 
+  kable(caption = "GV AND CP labels")
+```
