@@ -64,9 +64,9 @@ preds %>%
 
 Range of scores:
 
-- GV entity: `range(c_gviz_sub$score[which (c_gviz_sub$type == "entity")])`
-- GV label: `range(c_gviz_sub$score[which (c_gviz_sub$type == "label")])`
-- CP name: `range(clf$value)`
+- GV entity: `r range(c_gviz_sub$score[which (c_gviz_sub$type == "entity")])`
+- GV label: `r range(c_gviz_sub$score[which (c_gviz_sub$type == "label")])`
+- CP name: `r range(clf$value)`
 
 
 
