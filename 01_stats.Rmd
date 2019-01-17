@@ -26,6 +26,15 @@ preds <- c_gviz_sub %>% # combine for summary stats below
          type = ifelse(type == "entity", "GV_entity", (ifelse(type == "label", "GV_label", "GV_ocr")))) %>% 
   select(type, value, score, filename) %>% 
   rbind(tdf)
+
+# join the labels to check for agreement
+dfr <- preds %>% 
+  filter(type %in% c("CP_label", "GV_label")) %>% 
+  group_by(filename, value) %>%
+  tally() %>% 
+  filter(n > 1) %>% # these are images that have the same label twice
+  left_join(preds, by = c("filename", "value"))
+
 ```
 
 # Some general introspection
@@ -202,17 +211,32 @@ preds %>%
   kable(caption = "GV AND CP labels")
 ```
 
-## Predictor "agreement"
+## Predictor "agreement": images
+
+Predicors agree on at least one label in
+`r dfr %>% filter(type == "GV_label") %>%  group_by(filename) %>% summarise(nf = n()) %>% nrow()`  out of the total of 766 images.
+
+Broken down by number of agreed labels below.
+
+```{r}
+
+dfr %>% 
+  filter(type == "GV_label") %>% # just get rid of one - they are double
+  group_by(filename) %>% 
+  summarise(nf = n()) %>% 
+  ggplot(aes(nf)) + geom_histogram(binwidth = 1) +
+     xlab("Number of labels Google and Clarifai agree upon per image") +
+     ylab("") +
+     scale_x_continuous(breaks=1:9) +
+     scale_y_continuous(breaks=seq(0, 200, 20))
+```
+
+
+## Predictor "agreement": scores
 Labels used by **CP** _and_ **GV** to describe the _same_ image. Distribution of scores shown for labels that were used on more than 10 images.
 
 ```{r}
 # make the data frame
-dfr <- preds %>% 
-  filter(type %in% c("CP_label", "GV_label")) %>% 
-  group_by(filename, value) %>%
-  tally() %>% 
-  filter(n > 1) %>% # these are images that have the same label twice
-  left_join(preds, by = c("filename", "value"))
 
 vv <- dfr %>% 
   group_by(value, type) %>% 
