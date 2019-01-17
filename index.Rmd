@@ -15,7 +15,7 @@ description: "Tests of Catal images with vision cloud APIs to describe content"
 
 # Intro {-}
 
-We sampled 1000 random images out of the ~138k that are currently accessioned into [SDR](https://sdr.stanford.edu) and generated labels using the [Google Vision](https://cloud.google.com/vision/) API [**GV**][^1] and the [Clarifai Predict](https://clarifai.com/demo) API [**CP**].  
+We randomly sampled 1000 images out of the ~138k that are currently accessioned into [SDR](https://sdr.stanford.edu) and generated labels using the [Google Vision](https://cloud.google.com/vision/) API [**GV**][^1] and the [Clarifai Predict](https://clarifai.com/demo) API [**CP**].  
 
 [^1]: Many thanks to Peter Mangiafico.
 
@@ -24,6 +24,8 @@ Code to generate **GV** labels is here: https://github.com/sul-dlss-labs/google-
 Catal project is here: http://catalhoyuk.com
 
 SUL AI studio: https://sites.google.com/stanford.edu/sul-ai-studio/
+
+SUL AI studio talk is [here](https://docs.google.com/presentation/d/1pey1CBb6c4hAIot1YR0r4FNwQFEY6DXCjkNKZvA53l4/edit?usp=sharing). 
 
 For various reasons we had some attrition and ended up with 766 images. Results shown here are based on those.
 

@@ -201,3 +201,29 @@ preds %>%
   # arrange(desc(GV_label)) %>% 
   kable(caption = "GV AND CP labels")
 ```
+
+## Predictor "agreement"
+Labels used by **CP** _and_ **GV** to describe the _same_ image. Distribution of scores shown for labels that were used on more than 10 images.
+
+```{r}
+# make the data frame
+dfr <- preds %>% 
+  filter(type %in% c("CP_label", "GV_label")) %>% 
+  group_by(filename, value) %>%
+  tally() %>% 
+  filter(n > 1) %>% # these are images that have the same label twice
+  left_join(preds, by = c("filename", "value"))
+
+vv <- dfr %>% 
+  group_by(value, type) %>% 
+  tally() %>% 
+  filter(nn > 10) %>% pull(value)
+
+dfr %>% 
+  filter(value %in% vv) %>% 
+  ggplot(aes(value, score, color=type)) + 
+    geom_boxplot() + 
+    coord_flip()
+
+```
+
